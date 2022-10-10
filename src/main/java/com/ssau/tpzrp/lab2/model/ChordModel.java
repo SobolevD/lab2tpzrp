@@ -4,12 +4,10 @@ import com.ssau.tpzrp.lab2.validators.ChordModelAddNodeValidator;
 import com.ssau.tpzrp.lab2.validators.ChordModelInitValidator;
 import com.ssau.tpzrp.lab2.validators.ChordModelRemoveNodeValidator;
 import com.ssau.tpzrp.lab2.validators.ChordModelSearchNodeValidator;
-import lombok.Builder;
 import lombok.Data;
 
 import java.math.BigInteger;
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static com.ssau.tpzrp.lab2.constants.Constants.*;
 
@@ -75,7 +73,6 @@ public class ChordModel {
             System.out.printf(currentPos + " -> ");
             ++transitionsCount;
 
-            BigInteger fixedPosition = currentPos;
             for (Finger currentFinger : currentNode.getFingersTable()) {
                 Interval currentInterval = currentFinger.getInterval();
 
@@ -83,11 +80,6 @@ public class ChordModel {
                     currentPos = currentFinger.getSuccessor().getPosition();
                     break;
                 }
-            }
-
-            if (fixedPosition.equals(currentPos)) {
-                int lastFingerIndex = currentNode.getFingersTable().size() - 2;
-                currentPos = currentNode.getFingersTable().get(lastFingerIndex).getSuccessor().getPosition();
             }
         }
         System.out.printf(currentPos + "\n");
@@ -203,7 +195,16 @@ public class ChordModel {
     public void printSystem(String header) {
         System.out.println("======== " + header + " ========");
         System.out.println("=======================================");
-        System.out.println(model);
+        System.out.println(this);
         System.out.println("=======================================");
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        for (Map.Entry<BigInteger, ChordNode> curPos : model.entrySet()) {
+            result.append("Position: ").append(curPos.getKey()).append("; ChordNode: \n").append(curPos.getValue());
+        }
+        return result.toString();
     }
 }

@@ -13,7 +13,7 @@ public class Interval {
     private BigInteger start;
     private BigInteger end;
 
-    public boolean isNumIn(BigInteger num) {
+    private boolean isNumIn(BigInteger num) {
         return num.compareTo(start) >= 0 && num.compareTo(end) <= 0;
     }
 
@@ -24,5 +24,10 @@ public class Interval {
             return true;
         }
         return start.compareTo(end) >= 1 && num.compareTo(start) >= 1;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("(%s;%s)", start, end);
     }
 }

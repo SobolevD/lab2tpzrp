@@ -15,28 +15,24 @@ public class ChordNode {
     private BigInteger position;
     private List<Finger> fingersTable;
 
-    public void addFinger(Finger finger) {
-        fingersTable.add(finger);
-    }
-
     @Override
     public String toString() {
         return "ChordNode{" +
-                "position=" + position +
-                ", fingersTable=" + fingersTableString() +
-                '}';
+                "   position=" + position +
+                ",  fingersTable=" + fingersTableString() +
+                "}\n";
     }
 
     private String fingersTableString() {
         StringBuilder result = new StringBuilder();
 
         for (Finger finger : fingersTable) {
-            result.append("\n{");
-            result.append("\nStart = ").append(finger.getStart());
-            result.append("\nInterval = ").append(finger.getInterval());
-            result.append("\nSuccessor position = ").append(finger.getSuccessor().getPosition());
-            result.append("\nPredecessor position = ").append(finger.getPredecessor().getPosition());
-            result.append("}");
+            result.append("\n   {");
+            result.append("\n       Start = ").append(finger.getStart());
+            result.append("\n       Interval = ").append(finger.getInterval());
+            result.append("\n       Successor position = ").append(finger.getSuccessor().getPosition());
+            result.append("\n       Predecessor position = ").append(finger.getPredecessor().getPosition());
+            result.append("\n   }\n");
         }
         return result.toString();
     }
