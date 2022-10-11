@@ -109,7 +109,6 @@ public class ChordModel {
             Finger currentFinger = Finger.builder()
                     .start(fingerStart)
                     .interval(interval)
-                    .node(true)
                     .successor(successor)
                     .predecessor(predecessor)
                     .build();

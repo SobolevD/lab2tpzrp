@@ -12,7 +12,6 @@ import java.math.BigInteger;
 public class Finger {
     private BigInteger start;
     private Interval interval;
-    private boolean node;
     private ChordNode successor;
     private ChordNode predecessor;
 }
